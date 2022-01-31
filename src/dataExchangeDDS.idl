@@ -1,0 +1,8 @@
+struct dataExchangeDDS
+{
+    long endLoopSignal;
+    long synchronizer;
+    long diValue2;
+    long diValue3;
+    long diValue4;
+};
