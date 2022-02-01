@@ -42,11 +42,16 @@ target_link_libraries(${PROJECT_NAME}Publisher
     fastrtps 
     fastcdr 
     rt 
-    pthread)
+    )
 
 add_executable(${PROJECT_NAME}Subscriber 
     src/CodesysSubscriber.cpp 
     src/SubListener.cpp 
+    src/SharedMemory.cpp
     ${DDS_DATAEXCHANGE_SOURCES_CXX})
     
-target_link_libraries(${PROJECT_NAME}Subscriber fastrtps fastcdr)
+target_link_libraries(${PROJECT_NAME}Subscriber 
+    fastrtps 
+    fastcdr
+    rt
+    )

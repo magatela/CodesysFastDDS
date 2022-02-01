@@ -9,8 +9,6 @@
 #include <fastdds/dds/publisher/DataWriterListener.hpp>
 
 #include "dataExchangeDDSPubSubTypes.h"
-#include <boost/function.hpp>
-#include <boost/bind.hpp>
 
 using namespace eprosima::fastdds::dds;
 

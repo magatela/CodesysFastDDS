@@ -3,8 +3,10 @@
 
 #include "PubListener.hpp"
 
+//for callback functions
 #include <boost/function.hpp>
 #include <boost/bind.hpp>
+#include <functional>
 
 #include "shared_memory.hpp"
 #include "codesysToDDS.h"       /*  here are defined the structures for data 
@@ -48,7 +50,7 @@ class CodesysPublisher
         bool initShm();
         bool publish();
         void run();
-        void printInfo();
+        void printTransmissionResults();
 };
 
 #endif

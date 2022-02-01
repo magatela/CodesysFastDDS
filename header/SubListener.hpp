@@ -10,6 +10,14 @@
 #include <fastdds/dds/subscriber/DataReader.hpp>
 #include <fastdds/dds/subscriber/qos/DataReaderQos.hpp>
 
+//for callback functions
+#include <boost/function.hpp>
+#include <boost/bind.hpp>
+#include <functional>
+
+#include "codesysToDDS.h"       /*  here are defined the structures for data 
+                                    exchange using shared memory library */
+
 #include "dataExchangeDDSPubSubTypes.h"
 
 using namespace eprosima::fastdds::dds;
@@ -17,17 +25,11 @@ using namespace eprosima::fastdds::dds;
 class SubListener : public DataReaderListener
 {
     private:
-    //  signal to close the subscriber
-    std::atomic_bool continueSubcription;
-    
-    // checksums for data transfer verification
-    std::atomic_int checkSum2;
-    std::atomic_int checkSum3;
-    std::atomic_int checkSum4;
-    std::atomic_int receivedMessages;
-    
-public:
+    DataExchange tmp;
     dataExchangeDDS dataExchange_;
+
+public:
+    
     SubListener();
     ~SubListener() override;
     void on_subscription_matched(
@@ -35,6 +37,8 @@ public:
         const SubscriptionMatchedStatus &info) override;
 
     void on_data_available(DataReader *reader) override;
-    std::atomic_bool * getContinueSubcriptionSignal();
+       
+    //pointer to  calback funktion
+    boost::function<void(DataExchange *)> callback;  
 };
 #endif

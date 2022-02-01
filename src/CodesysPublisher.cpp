@@ -160,11 +160,11 @@ void CodesysPublisher::run()
         }
     }
     //this will not happend because the listener is waitung for a subscriber
-    printInfo();
+    printTransmissionResults();
 }
 
 
-void CodesysPublisher::printInfo()
+void CodesysPublisher::printTransmissionResults()
 {
     // DEBUG //
     std::cout << "REPORT: Sent messages:" << this->sentMessages << "\n" 
